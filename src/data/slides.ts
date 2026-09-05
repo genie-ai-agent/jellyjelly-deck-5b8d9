@@ -270,8 +270,8 @@ export const slides: Slide[] = [
         note: 'Read as Joe on the current team, not Joe Barouch. Ari is still open (see equity).',
       },
       {
-        band: '[Iqram]',
-        basis: 'Founder comp is its own line and is not in either band.',
+        band: '[founder comp]',
+        basis: 'Iqram sits outside both bands \u2014 founder salary is its own decision.',
         people: ['Iqram'],
       },
     ],
