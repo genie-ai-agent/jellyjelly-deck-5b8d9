@@ -445,17 +445,11 @@ export const slides: Slide[] = [
         size: '2BR',
         price: '$6.7k',
       },
-      {
-        name: 'San Francisco average',
-        where: 'city-wide',
-        size: '3BR',
-        price: '$8.3\u201310k',
-      },
     ],
     compsNote:
-      'Listed rents pulled September 2026 from the buildings\u2019 own listings plus Rentable, Zillow and RentHop neighborhood data. Indicative, not quotes.',
+      'City-wide 3BR average runs $8.3\u201310k. Rents pulled September 2026 from building listings plus Rentable, Zillow and RentHop \u2014 indicative, not quotes.',
     footnote:
-      'Two open questions: your note cut off at \u201ca great gathering place for\u2026\u201d, and Sea Cliff came up alongside Embarcadero \u2014 those are ~7 miles apart, so one of them has to anchor the search.',
+      'Open: the end of \u201ca great gathering place for\u2026\u201d, and whether Embarcadero or Sea Cliff anchors the search \u2014 they sit ~7 miles apart.',
   },
   {
     id: 'investors',
