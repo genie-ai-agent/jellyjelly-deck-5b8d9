@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+/* ── editorial: paper, ink, one red ─────────────────────────────── */
+:root {
+  --paper: #f6f3ec;
+  --paper-deep: #efeae0;
+  --ink: #14110f;
+  --ink-soft: #4a443e;
+  --ink-faint: #8d8578;
+  --rule: #cdc5b6;
+  --jelly: #c8352b;
+  --jelly-deep: #8f231d;
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: #fffdf8;
+  --card-foreground: var(--ink);
+  --popover: #fffdf8;
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--paper);
+  --secondary: var(--paper-deep);
+  --secondary-foreground: var(--ink);
+  --muted: var(--paper-deep);
+  --muted-foreground: var(--ink-soft);
+  --accent: var(--jelly);
+  --accent-foreground: #fffdf8;
+  --destructive: var(--jelly-deep);
+  --destructive-foreground: #fffdf8;
+  --border: var(--rule);
+  --input: var(--rule);
+  --ring: var(--jelly);
+  --radius: 0.125rem;
+
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-rule: var(--rule);
+  --color-jelly: var(--jelly);
+  --color-jelly-deep: var(--jelly-deep);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --radius-sm: 0.0625rem;
+  --radius-md: 0.125rem;
+  --radius-lg: 0.25rem;
+}
+
+* { border-color: var(--rule); }
+
+html, body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  /* faint paper grain */
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(20, 17, 15, 0.045) 1px, transparent 0);
+  background-size: 4px 4px;
+}
+
+::selection { background: var(--jelly); color: #fffdf8; }
+
+.font-display { font-family: var(--font-display); }
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink-faint);
+}
+
+.blank {
+  color: var(--jelly-deep);
+  font-family: var(--font-body);
+  font-weight: 500;
+  background: rgba(200, 53, 43, 0.08);
+  border-bottom: 1px solid rgba(200, 53, 43, 0.35);
+  padding: 0 0.25em;
+  white-space: nowrap;
+}
+
+/* ── slide plumbing ────────────────────────────────────────────── */
+.deck-slide { display: none; }
+.deck-slide[data-active="true"] { display: flex; }
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.rise > * { animation: riseIn 620ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+.rise > *:nth-child(1) { animation-delay: 40ms; }
+.rise > *:nth-child(2) { animation-delay: 110ms; }
+.rise > *:nth-child(3) { animation-delay: 180ms; }
+.rise > *:nth-child(4) { animation-delay: 250ms; }
+.rise > *:nth-child(5) { animation-delay: 320ms; }
+.rise > *:nth-child(6) { animation-delay: 390ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise > * { animation: none; }
+}
+
+/* ── print: every slide is one page ────────────────────────────── */
+@media print {
+  @page { size: 1600px 900px; margin: 0; }
+  html, body { background: #fff; }
+  body { background-image: none; }
+  .deck-chrome { display: none !important; }
+  .deck-slide,
+  .deck-slide[data-active="false"] {
+    display: flex !important;
+    break-after: page;
+    page-break-after: always;
+    height: 900px;
+    width: 100%;
+  }
+  .rise > * { animation: none !important; opacity: 1 !important; transform: none !important; }
+}
