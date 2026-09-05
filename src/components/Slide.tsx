@@ -9,6 +9,7 @@ import SpendSlide from './slides/SpendSlide';
 import RoundSlide from './slides/RoundSlide';
 import ResidenceSlide from './slides/ResidenceSlide';
 import InvestorsSlide from './slides/InvestorsSlide';
+import ChecklistSlide from './slides/ChecklistSlide';
 
 export default function Slide({ slide }: { slide: SlideData }) {
   switch (slide.layout) {
@@ -98,6 +99,16 @@ export default function Slide({ slide }: { slide: SlideData }) {
           briefs={slide.briefs}
           comps={slide.comps}
           compsNote={slide.compsNote}
+          footnote={slide.footnote}
+        />
+      );
+    case 'checklist':
+      return (
+        <ChecklistSlide
+          eyebrow={slide.eyebrow}
+          title={slide.title}
+          standfirst={slide.standfirst}
+          items={slide.items}
           footnote={slide.footnote}
         />
       );

@@ -54,6 +54,12 @@ export type Comp = {
   price: string;
 };
 
+export type CheckItem = {
+  slide: string;
+  status: 'in' | 'part' | 'gap';
+  note: string;
+};
+
 export type InvestorGroup = {
   heading: string;
   brief: string;
@@ -157,6 +163,16 @@ export type Slide =
   | {
       id: string;
       nav: string;
+      layout: 'checklist';
+      eyebrow: string;
+      title: string;
+      standfirst: string;
+      items: CheckItem[];
+      footnote?: string;
+    }
+  | {
+      id: string;
+      nav: string;
       layout: 'investors';
       eyebrow: string;
       title: string;
@@ -177,7 +193,8 @@ export const slides: Slide[] = [
     nav: 'Cover',
     layout: 'title',
     title: 'JellyJelly',
-    standfirst: 'The team, the team we still need, what they own, and the round.',
+    standfirst:
+      'The problem, the open accelerator, the team we still need, what they own, and the round.',
     meta: ['Prepared for Sam Lessin', 'September 2026', 'Confidential draft'],
   },
   {
@@ -194,10 +211,52 @@ export const slides: Slide[] = [
     footnote: 'Arrow keys to move. Cmd-P prints the whole thing to PDF.',
   },
   {
+    id: 'problem',
+    nav: 'The problem',
+    layout: 'statement',
+    eyebrow: 'Page 02',
+    title: 'The door is the bottleneck, not the talent.',
+    body: [
+      'More people want to build and innovate than at any point in history. Most of them never get near the room where it happens.',
+      'YC, and pretty much every fund in the business, runs on the warm intro. It is a boys club. Getting in is the hard part, not the work.',
+      'Z Fellows is close to an exception. Almost nobody else is \u2014 so the filter selects for who you already know, and [how many apply] never find out.',
+    ],
+    footnote:
+      'Your framing, kept in your words. Two calls to make: whether you name YC on the page or only in the room, and whether you back this with [acceptance rate] \u2014 a number turns a claim into an argument.',
+  },
+  {
+    id: 'solution',
+    nav: 'Open accelerator',
+    layout: 'statement',
+    eyebrow: 'Page 03',
+    title: 'JellyJelly is an open accelerator.',
+    body: [
+      'Open means no warm intro required. The way in is [apply / just show up / invite-optional \u2014 the actual mechanic].',
+      'What you get: jellies with operators on growth, product, engineering and fundraising, all day \u2014 not one call a quarter.',
+      'What we take: [equity per company, check size, or nothing at all].',
+    ],
+    footnote:
+      'This is the page Sam reads twice. The two blanks are the whole model: how someone gets in, and what we get for helping.',
+  },
+  {
+    id: 'why-now',
+    nav: 'Why now',
+    layout: 'statement',
+    eyebrow: 'Page 04',
+    title: 'Why this works now and did not in 2022.',
+    body: [
+      'Getting from idea to prototype to first users is cheaper and faster than it has ever been.',
+      'That unlocks the people who were never going to quit and move to Mountain View: non-engineers, and engineers with jobs and families shipping on the side.',
+      'That generation has no accelerator built for it. [the number that proves the wave \u2014 new projects, signups, apps shipped]',
+    ],
+    footnote:
+      'Carried over from your own why-now argument. If there is one number behind the first line, it belongs on this page.',
+  },
+  {
     id: 'team',
     nav: 'The team',
     layout: 'team',
-    eyebrow: 'Page 02',
+    eyebrow: 'Page 05',
     title: 'The team',
     standfirst: 'Five people. Resume only \u2014 what each of them has already shipped.',
     people: [
@@ -217,7 +276,7 @@ export const slides: Slide[] = [
     id: 'hiring',
     nav: 'Who we hire next',
     layout: 'hiring',
-    eyebrow: 'Page 03',
+    eyebrow: 'Page 06',
     title: 'The team we want to hire',
     standfirst: 'Not job specs. Eight people we already know we want.',
     hires: [
@@ -237,7 +296,7 @@ export const slides: Slide[] = [
     id: 'equity',
     nav: 'Proposed equity',
     layout: 'equity',
-    eyebrow: 'Page 04',
+    eyebrow: 'Page 07',
     title: 'Proposed equity split',
     standfirst:
       'One rule: everyone except the two founders is at 1%. Andrew is the single exception.',
@@ -269,7 +328,7 @@ export const slides: Slide[] = [
     id: 'salaries',
     nav: 'What we pay',
     layout: 'comp',
-    eyebrow: 'Page 05',
+    eyebrow: 'Page 08',
     title: 'What we pay',
     standfirst:
       'Two bands, set on experience and level. Everyone gets a real salary \u2014 nothing deferred.',
@@ -316,7 +375,7 @@ export const slides: Slide[] = [
     id: 'round',
     nav: 'The round',
     layout: 'round',
-    eyebrow: 'Page 06',
+    eyebrow: 'Page 09',
     title: 'The round',
     standfirst: '$50M at $1B. The money is the team \u2014 that is the whole use of proceeds.',
     terms: [
@@ -338,7 +397,7 @@ export const slides: Slide[] = [
     id: 'spend',
     nav: 'Where it goes',
     layout: 'spend',
-    eyebrow: 'Page 07',
+    eyebrow: 'Page 10',
     title: 'Where the money goes',
     standfirst:
       'Payroll is most of it. The rest is compute, rooms for people to work in, and getting the community in one place.',
@@ -388,7 +447,7 @@ export const slides: Slide[] = [
     id: 'residences',
     nav: 'The residences',
     layout: 'residence',
-    eyebrow: 'Page 08',
+    eyebrow: 'Page 11',
     title: 'The residences',
     standfirst:
       'Not hotels. A rented apartment with a lot of rooms, run as a place the team gathers.',
@@ -455,7 +514,7 @@ export const slides: Slide[] = [
     id: 'investors',
     nav: 'Who we want in',
     layout: 'investors',
-    eyebrow: 'Page 09',
+    eyebrow: 'Page 12',
     title: 'Who we want to raise from',
     standfirst:
       'Not a list of everyone who would say yes. Three kinds of money, and we want all three.',
@@ -479,16 +538,76 @@ export const slides: Slide[] = [
     footnote: 'Sam: tell us which names on this list you would rather we cut.',
   },
   {
-    id: 'next',
-    nav: 'Coming next',
-    layout: 'statement',
-    eyebrow: 'Page 10',
-    title: 'Slides that land here next.',
-    body: [
-      'Product \u2014 the one screen that explains JellyJelly without narration.',
-      'Traction \u2014 [the two numbers that are going up and to the right].',
-      'Why now \u2014 why this is buildable in 2026 and was not in 2022.',
+    id: 'yc-check',
+    nav: 'Against the YC template',
+    layout: 'checklist',
+    eyebrow: 'Page 13',
+    title: 'What is still missing',
+    standfirst:
+      'YC\u2019s seed outline, in their order, checked against this deck. This page is for us \u2014 cut it before Sam sees it.',
+    items: [
+      {
+        slide: '1. Company + one-liner',
+        status: 'part',
+        note: 'Cover exists. It still needs the eight-word version of what JellyJelly is, the Stripe-style line.',
+      },
+      {
+        slide: '2. The problem',
+        status: 'in',
+        note: 'Written, page 02. Wants [how many apply] and [acceptance rate] behind it.',
+      },
+      {
+        slide: '3. The solution',
+        status: 'in',
+        note: 'Written, page 03. Open accelerator. Entry mechanic and terms still blank.',
+      },
+      {
+        slide: '4. Traction',
+        status: 'gap',
+        note: 'The biggest hole. YC wants a chart: [users], [jellies per week], [retention], growth rate. Adjectives do not count here.',
+      },
+      {
+        slide: '5. More metrics / revenue',
+        status: 'gap',
+        note: 'Revenue if any. Otherwise the two numbers that are going up, with context next to them.',
+      },
+      {
+        slide: '6. The insight \u2014 why you win',
+        status: 'part',
+        note: 'Why now covers half of it, page 04. Missing: what you know about founders that other investors do not.',
+      },
+      {
+        slide: '7. Business model',
+        status: 'gap',
+        note: 'How an open accelerator makes money: [equity per company], [carry], [subscription], or something else. Sam will ask this first.',
+      },
+      {
+        slide: '8. Market size',
+        status: 'gap',
+        note: 'Bottom-up, not a TAM bubble: [how many founders reachable] x [value per founder]. Show the math.',
+      },
+      {
+        slide: '9. Team',
+        status: 'in',
+        note: 'Pages 05 and 06. Resume lines for Joe, Ari, Kris and Zach are still blank, and YC is blunt that this page is about founders.',
+      },
+      {
+        slide: '10. The ask + what it buys',
+        status: 'part',
+        note: 'Pages 09\u201311 have $50M at $1B and where it goes. Missing the 12-month milestone that makes this Series A ready.',
+      },
+      {
+        slide: 'Extra: product',
+        status: 'gap',
+        note: 'Not in YC\u2019s ten, but there is no screenshot anywhere in this deck. One screen that explains itself.',
+      },
+      {
+        slide: 'Extra: competition',
+        status: 'gap',
+        note: 'You already named the field: YC, the funds, Z Fellows as the near-exception. One page putting us against them.',
+      },
     ],
-    footnote: 'Send the details and they get built into this same link.',
+    footnote:
+      'One structural note: equity split, salary bands and the residences are not YC pages \u2014 they are internal planning. Strong for a partner conversation, unusual in a deck. Worth deciding whether Sam gets them in the main flow or as an appendix.',
   },
 ];
