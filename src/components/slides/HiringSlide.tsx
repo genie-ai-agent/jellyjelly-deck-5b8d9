@@ -13,26 +13,26 @@ type Props = {
 export default function HiringSlide({ eyebrow, title, standfirst, hires, footnote }: Props) {
   return (
     <Frame eyebrow={eyebrow} title={title} standfirst={standfirst} footnote={footnote}>
-      <div className="border-t border-ink">
-        <div className="hidden grid-cols-[1.1fr_2fr_0.7fr] gap-6 border-b border-rule py-3 sm:grid">
-          <span className="eyebrow">Seat</span>
-          <span className="eyebrow">Why it exists</span>
-          <span className="eyebrow text-right">When</span>
-        </div>
+      <div className="grid gap-x-10 gap-y-0 sm:grid-cols-2">
         {hires.map((h, i) => (
           <div
-            key={i}
-            className="grid grid-cols-1 gap-1 border-b border-rule py-4 transition-colors duration-200 hover:bg-paper-deep sm:grid-cols-[1.1fr_2fr_0.7fr] sm:items-baseline sm:gap-6"
+            key={h.name}
+            className="group flex items-baseline gap-4 border-b border-rule py-3 transition-colors duration-200 hover:bg-paper-deep"
           >
-            <h3 className="font-display m-0 text-[1.3rem] font-light leading-tight text-ink">
-              {ink(h.role)}
-            </h3>
-            <p className="m-0 max-w-[52ch] text-[0.95rem] leading-[1.5] text-ink-soft">
-              {ink(h.why)}
-            </p>
-            <p className="m-0 text-[0.8rem] font-semibold uppercase tracking-[0.12em] text-jelly sm:text-right">
-              {ink(h.when)}
-            </p>
+            <span className="font-display text-[0.8rem] font-light text-ink-faint">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <div className="min-w-0">
+              <h3 className="font-display m-0 text-[1.2rem] font-light leading-tight text-ink">
+                {h.name}
+              </h3>
+              <p className="m-0 mt-1 text-[0.78rem] font-semibold uppercase tracking-[0.12em] text-jelly">
+                {ink(h.role)}
+              </p>
+              <p className="m-0 mt-1 max-w-[34ch] text-[0.9rem] leading-[1.45] text-ink-soft">
+                {ink(h.why)}
+              </p>
+            </div>
           </div>
         ))}
       </div>

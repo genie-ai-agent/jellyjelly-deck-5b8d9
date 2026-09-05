@@ -3,6 +3,7 @@ import TitleSlide from './slides/TitleSlide';
 import StatementSlide from './slides/StatementSlide';
 import TeamSlide from './slides/TeamSlide';
 import HiringSlide from './slides/HiringSlide';
+import EquitySlide from './slides/EquitySlide';
 import RoundSlide from './slides/RoundSlide';
 import InvestorsSlide from './slides/InvestorsSlide';
 
@@ -38,6 +39,17 @@ export default function Slide({ slide }: { slide: SlideData }) {
           title={slide.title}
           standfirst={slide.standfirst}
           hires={slide.hires}
+          footnote={slide.footnote}
+        />
+      );
+    case 'equity':
+      return (
+        <EquitySlide
+          eyebrow={slide.eyebrow}
+          title={slide.title}
+          standfirst={slide.standfirst}
+          rows={slide.rows}
+          terms={slide.terms}
           footnote={slide.footnote}
         />
       );
