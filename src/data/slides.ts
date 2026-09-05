@@ -39,6 +39,21 @@ export type SpendItem = {
   detail: string;
 };
 
+export type ResidenceBrief = {
+  city: string;
+  anchor: string;
+  constraints: string[];
+  estimate: string;
+  estimateNote: string;
+};
+
+export type Comp = {
+  name: string;
+  where: string;
+  size: string;
+  price: string;
+};
+
 export type InvestorGroup = {
   heading: string;
   brief: string;
@@ -124,6 +139,19 @@ export type Slide =
       standfirst: string;
       terms: MoneyRow[];
       use: MoneyRow[];
+      footnote?: string;
+    }
+  | {
+      id: string;
+      nav: string;
+      layout: 'residence';
+      eyebrow: string;
+      title: string;
+      standfirst: string;
+      chooser: string;
+      briefs: ResidenceBrief[];
+      comps: Comp[];
+      compsNote: string;
       footnote?: string;
     }
   | {
@@ -343,24 +371,99 @@ export const slides: Slide[] = [
       },
       {
         label: 'Corporate residence \u2014 San Francisco',
-        value: '[$ / mo]',
+        value: '~$12\u201318k / mo',
         detail:
-          'A rented multi-room apartment the team lives and works out of, instead of hotels.',
+          'A rented multi-room apartment near Embarcadero. Market estimate, not a signed lease \u2014 next page.',
       },
       {
         label: 'Corporate residence \u2014 [second city]',
         value: '[$ / mo]',
-        detail: 'Same setup abroad. [city name \u2014 the voice note came through as \u201cFaidai\u201d]',
+        detail: 'Same setup, walking distance to Iqram. [city name \u2014 next page]',
       },
     ],
     footnote:
-      'Your note cut off at \u201cI wanna use\u201d \u2014 send the rest and it lands on this page. Every amount here is open; only payroll computes from what you have already decided.',
+      'Only payroll computes from decisions already made. The residence number is researched market rate for a 3\u20134 bedroom on the waterfront, and the next page shows the comps it came from.',
+  },
+  {
+    id: 'residences',
+    nav: 'The residences',
+    layout: 'residence',
+    eyebrow: 'Page 08',
+    title: 'The residences',
+    standfirst:
+      'Not hotels and not a second office. A rented apartment with a lot of rooms, run as a place the team and the community gather.',
+    chooser:
+      'Greg Rogers picks the apartments. Brief to him: enough rooms to sleep the team, one big common room that works for a gathering, and no interest in fancy for its own sake.',
+    briefs: [
+      {
+        city: 'San Francisco',
+        anchor: 'As close to Embarcadero as we can find.',
+        constraints: [
+          'Walk to Embarcadero station \u2014 BART and Muni in one stop',
+          '4+ bedrooms, one common room big enough to host in',
+          'Furnished or easy to furnish; 12-month lease, not nightly',
+          'Not luxury. Spend on space and location, not finishes',
+          'Sea Cliff came up in the same breath \u2014 it is ~7 miles from Embarcadero, so it is a drive, not a walk. Which one anchors?',
+        ],
+        estimate: '$12\u201318k / mo',
+        estimateNote:
+          '3\u20134 bedrooms on the waterfront, ~$145\u2013215k a year. Comps at right.',
+      },
+      {
+        city: '[second city]',
+        anchor: 'Ideally within walking distance of where Iqram lives.',
+        constraints: [
+          'Same setup: multi-room apartment, one good common room',
+          'Location set by Iqram\u2019s address, not by a neighborhood',
+          'City name still open \u2014 the voice note came through as \u201cFaidai\u201d (Dubai?)',
+          'Cannot be priced until the city is named',
+        ],
+        estimate: '[$ / mo]',
+        estimateNote: 'Name the city and this gets the same comp treatment.',
+      },
+    ],
+    comps: [
+      {
+        name: 'The Gateway',
+        where: '460 Davis Ct \u2014 where FiDi, Jackson Square and Embarcadero meet',
+        size: 'Studio\u20133BR, plus 2\u20134BR townhomes',
+        price: '$4.5\u201310.2k',
+      },
+      {
+        name: 'The Infinity',
+        where: '300 Spear St, South Beach',
+        size: '3BR, 1,882 sq ft',
+        price: '$14k',
+      },
+      {
+        name: 'The Infinity',
+        where: '300 Spear St, South Beach',
+        size: '4BR, 2,683 sq ft',
+        price: '$29.5k',
+      },
+      {
+        name: 'Embarcadero average',
+        where: 'neighborhood-wide',
+        size: '2BR',
+        price: '$6.7k',
+      },
+      {
+        name: 'San Francisco average',
+        where: 'city-wide',
+        size: '3BR',
+        price: '$8.3\u201310k',
+      },
+    ],
+    compsNote:
+      'Listed rents pulled September 2026 from the buildings\u2019 own listings plus Rentable, Zillow and RentHop neighborhood data. Indicative, not quotes.',
+    footnote:
+      'Your note cut off at \u201ca great gathering place for\u2026\u201d \u2014 send the end of that sentence and it becomes the line that justifies this whole page.',
   },
   {
     id: 'investors',
     nav: 'Who we want in',
     layout: 'investors',
-    eyebrow: 'Page 08',
+    eyebrow: 'Page 09',
     title: 'Who we want to raise from',
     standfirst:
       'Not a list of everyone who would say yes. Three kinds of money, and we want all three.',
@@ -387,7 +490,7 @@ export const slides: Slide[] = [
     id: 'next',
     nav: 'Coming next',
     layout: 'statement',
-    eyebrow: 'Page 09',
+    eyebrow: 'Page 10',
     title: 'Slides that land here next.',
     body: [
       'Product \u2014 the one screen that explains JellyJelly without narration.',

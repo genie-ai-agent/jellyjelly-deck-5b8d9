@@ -7,6 +7,7 @@ import EquitySlide from './slides/EquitySlide';
 import CompSlide from './slides/CompSlide';
 import SpendSlide from './slides/SpendSlide';
 import RoundSlide from './slides/RoundSlide';
+import ResidenceSlide from './slides/ResidenceSlide';
 import InvestorsSlide from './slides/InvestorsSlide';
 
 export default function Slide({ slide }: { slide: SlideData }) {
@@ -84,6 +85,19 @@ export default function Slide({ slide }: { slide: SlideData }) {
           standfirst={slide.standfirst}
           terms={slide.terms}
           use={slide.use}
+          footnote={slide.footnote}
+        />
+      );
+    case 'residence':
+      return (
+        <ResidenceSlide
+          eyebrow={slide.eyebrow}
+          title={slide.title}
+          standfirst={slide.standfirst}
+          chooser={slide.chooser}
+          briefs={slide.briefs}
+          comps={slide.comps}
+          compsNote={slide.compsNote}
           footnote={slide.footnote}
         />
       );
