@@ -391,7 +391,7 @@ export const slides: Slide[] = [
     eyebrow: 'Page 08',
     title: 'The residences',
     standfirst:
-      'Not hotels and not a second office. A rented apartment with a lot of rooms, run as a place the team and the community gather.',
+      'Not hotels, not a second office. A rented apartment with a lot of rooms, run as a place the team gathers.',
     chooser:
       'Greg Rogers picks the apartments. Brief to him: enough rooms to sleep the team, one big common room that works for a gathering, and no interest in fancy for its own sake.',
     briefs: [
@@ -403,7 +403,6 @@ export const slides: Slide[] = [
           '4+ bedrooms, one common room big enough to host in',
           'Furnished or easy to furnish; 12-month lease, not nightly',
           'Not luxury. Spend on space and location, not finishes',
-          'Sea Cliff came up in the same breath \u2014 it is ~7 miles from Embarcadero, so it is a drive, not a walk. Which one anchors?',
         ],
         estimate: '$12\u201318k / mo',
         estimateNote:
@@ -415,8 +414,7 @@ export const slides: Slide[] = [
         constraints: [
           'Same setup: multi-room apartment, one good common room',
           'Location set by Iqram\u2019s address, not by a neighborhood',
-          'City name still open \u2014 the voice note came through as \u201cFaidai\u201d (Dubai?)',
-          'Cannot be priced until the city is named',
+          'City name still open \u2014 the note came through as \u201cFaidai\u201d (Dubai?)',
         ],
         estimate: '[$ / mo]',
         estimateNote: 'Name the city and this gets the same comp treatment.',
@@ -457,7 +455,7 @@ export const slides: Slide[] = [
     compsNote:
       'Listed rents pulled September 2026 from the buildings\u2019 own listings plus Rentable, Zillow and RentHop neighborhood data. Indicative, not quotes.',
     footnote:
-      'Your note cut off at \u201ca great gathering place for\u2026\u201d \u2014 send the end of that sentence and it becomes the line that justifies this whole page.',
+      'Two open questions: your note cut off at \u201ca great gathering place for\u2026\u201d, and Sea Cliff came up alongside Embarcadero \u2014 those are ~7 miles apart, so one of them has to anchor the search.',
   },
   {
     id: 'investors',

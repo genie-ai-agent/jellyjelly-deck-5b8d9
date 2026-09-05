@@ -25,7 +25,7 @@ export default function ResidenceSlide({
 }: Props) {
   return (
     <Frame eyebrow={eyebrow} title={title} standfirst={standfirst} footnote={footnote}>
-      <p className="m-0 mb-7 border-y border-ink py-3 text-[0.9rem] leading-snug text-ink-soft">
+      <p className="m-0 mb-5 border-y border-ink py-[0.55rem] text-[0.85rem] leading-snug text-ink-soft">
         {ink(chooser)}
       </p>
 
@@ -40,32 +40,32 @@ export default function ResidenceSlide({
               {ink(b.anchor)}
             </p>
 
-            <ul className="m-0 mt-4 list-none space-y-[0.55rem] p-0">
+            <p className="font-display m-0 mt-3 text-[1.45rem] font-light leading-none text-jelly">
+              {ink(b.estimate)}
+            </p>
+            <p className="m-0 mt-1 text-[0.74rem] italic leading-snug text-ink-faint">
+              {ink(b.estimateNote)}
+            </p>
+
+            <ul className="m-0 mt-4 list-none space-y-[0.5rem] p-0">
               {b.constraints.map((c) => (
                 <li
                   key={c}
-                  className="flex gap-2 border-b border-rule pb-[0.55rem] text-[0.84rem] leading-snug text-ink"
+                  className="flex gap-2 border-b border-rule pb-[0.5rem] text-[0.82rem] leading-snug text-ink"
                 >
                   <span className="mt-[0.45em] h-[5px] w-[5px] shrink-0 rotate-45 bg-jelly" aria-hidden="true" />
                   <span>{ink(c)}</span>
                 </li>
               ))}
             </ul>
-
-            <p className="font-display m-0 mt-4 text-[1.45rem] font-light leading-none text-jelly">
-              {ink(b.estimate)}
-            </p>
-            <p className="m-0 mt-1 text-[0.74rem] italic leading-snug text-ink-faint">
-              {ink(b.estimateNote)}
-            </p>
           </div>
         ))}
 
         <div className="border-t border-ink pt-4">
           <p className="eyebrow m-0 text-[0.6rem]">What is actually on the market</p>
-          <ul className="m-0 mt-3 list-none space-y-3 p-0">
+          <ul className="m-0 mt-3 list-none space-y-[0.45rem] p-0">
             {comps.map((c) => (
-              <li key={`${c.name}-${c.size}`} className="border-b border-rule pb-3">
+              <li key={`${c.name}-${c.size}`} className="border-b border-rule pb-[0.45rem]">
                 <div className="flex items-baseline justify-between gap-3">
                   <p className="font-display m-0 text-[0.98rem] font-light leading-tight text-ink">
                     {ink(c.name)}
@@ -80,7 +80,7 @@ export default function ResidenceSlide({
               </li>
             ))}
           </ul>
-          <p className="m-0 mt-3 text-[0.72rem] italic leading-snug text-ink-faint">
+          <p className="m-0 mt-2 text-[0.72rem] italic leading-snug text-ink-faint">
             {ink(compsNote)}
           </p>
         </div>
