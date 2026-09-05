@@ -391,7 +391,7 @@ export const slides: Slide[] = [
     eyebrow: 'Page 08',
     title: 'The residences',
     standfirst:
-      'Not hotels, not a second office. A rented apartment with a lot of rooms, run as a place the team gathers.',
+      'Not hotels. A rented apartment with a lot of rooms, run as a place the team gathers.',
     chooser:
       'Greg Rogers picks the apartments. Brief to him: enough rooms to sleep the team, one big common room that works for a gathering, and no interest in fancy for its own sake.',
     briefs: [

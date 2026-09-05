@@ -25,7 +25,7 @@ export default function ResidenceSlide({
 }: Props) {
   return (
     <Frame eyebrow={eyebrow} title={title} standfirst={standfirst} footnote={footnote}>
-      <p className="m-0 mb-5 border-y border-ink py-[0.55rem] text-[0.85rem] leading-snug text-ink-soft">
+      <p className="m-0 -mt-4 mb-5 border-y border-ink py-[0.55rem] text-[0.85rem] leading-snug text-ink-soft">
         {ink(chooser)}
       </p>
 
