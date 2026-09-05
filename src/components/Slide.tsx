@@ -4,6 +4,8 @@ import StatementSlide from './slides/StatementSlide';
 import TeamSlide from './slides/TeamSlide';
 import HiringSlide from './slides/HiringSlide';
 import EquitySlide from './slides/EquitySlide';
+import CompSlide from './slides/CompSlide';
+import SpendSlide from './slides/SpendSlide';
 import RoundSlide from './slides/RoundSlide';
 import InvestorsSlide from './slides/InvestorsSlide';
 
@@ -50,6 +52,27 @@ export default function Slide({ slide }: { slide: SlideData }) {
           standfirst={slide.standfirst}
           rows={slide.rows}
           terms={slide.terms}
+          footnote={slide.footnote}
+        />
+      );
+    case 'comp':
+      return (
+        <CompSlide
+          eyebrow={slide.eyebrow}
+          title={slide.title}
+          standfirst={slide.standfirst}
+          bands={slide.bands}
+          terms={slide.terms}
+          footnote={slide.footnote}
+        />
+      );
+    case 'spend':
+      return (
+        <SpendSlide
+          eyebrow={slide.eyebrow}
+          title={slide.title}
+          standfirst={slide.standfirst}
+          items={slide.items}
           footnote={slide.footnote}
         />
       );
