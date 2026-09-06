@@ -88,8 +88,12 @@ export default function Deck() {
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
     >
-      {/* running head */}
-      <header className="deck-chrome pointer-events-none fixed left-0 right-0 top-0 z-20 flex items-center justify-between gap-4 px-5 pt-4 sm:px-10 sm:pt-5 lg:px-16">
+      {/* running head — hidden on the cover, which carries the logo alone */}
+      <header
+        className={`deck-chrome pointer-events-none fixed left-0 right-0 top-0 z-20 flex items-center justify-between gap-4 px-5 pt-4 transition-opacity duration-300 sm:px-10 sm:pt-5 lg:px-16 ${
+          i === 0 ? 'opacity-0' : 'opacity-100'
+        }`}
+      >
         <span className="glasspane pill flex items-center gap-2 px-3 py-1.5">
           <img src="/jelly-icon.svg" alt="" aria-hidden="true" className="h-4 w-4" />
           <span className="eyebrow">{deckMeta.company}</span>
