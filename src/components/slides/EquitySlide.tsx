@@ -34,12 +34,12 @@ function groupRows(rows: EquityRow[]) {
 function Row({ r }: { r: EquityRow }) {
   const set = isSet(r.grant);
   return (
-    <div className="flex items-baseline justify-between gap-3 border-b border-rule py-[0.34rem] transition-colors duration-200 hover:bg-paper-deep">
+    <div className="flex items-baseline justify-between gap-3 border-b border-rule py-[0.4rem] last:border-b-0">
       <dt className="m-0 min-w-0">
         <span className="font-display block text-[0.98rem] font-light leading-tight text-ink">
           {r.name}
         </span>
-        <span className="block text-[0.68rem] italic leading-tight text-ink-faint">
+        <span className="block text-[0.68rem] leading-tight text-ink-faint">
           {ink(r.note)}
         </span>
       </dt>
@@ -47,7 +47,7 @@ function Row({ r }: { r: EquityRow }) {
         className={`font-display m-0 shrink-0 leading-none ${
           set
             ? pct(r.grant) >= 5
-              ? 'text-[1.6rem] font-light text-jelly'
+              ? 'text-[1.6rem] font-light text-jelly-ink'
               : 'text-[1.15rem] font-light text-ink'
             : 'text-[0.95rem] font-light text-ink'
         }`}
@@ -76,11 +76,11 @@ export default function EquitySlide({
     <Frame eyebrow={eyebrow} title={title} standfirst={standfirst} footnote={footnote}>
       <div className="grid gap-8 lg:grid-cols-[1fr_1fr_0.82fr] lg:gap-12">
         {columns.map((col, ci) => (
-          <div key={ci} className="space-y-6">
+          <div key={ci} className="glasspane space-y-5 self-start p-4 sm:p-5">
             {col.map((g) => (
               <div key={g.heading}>
                 <p className="eyebrow m-0 text-[0.6rem]">{g.heading}</p>
-                <dl className="m-0 mt-2 border-t border-ink">
+                <dl className="m-0 mt-2 border-t border-rule">
                   {g.items.map((r) => (
                     <Row key={r.name} r={r} />
                   ))}
@@ -90,12 +90,12 @@ export default function EquitySlide({
           </div>
         ))}
 
-        <div>
+        <div className="glasspane self-start p-4 sm:p-5">
           <p className="eyebrow m-0 text-[0.6rem]">Allocated on this page</p>
-          <p className="font-display m-0 mt-1 text-[clamp(2.2rem,7vw,3.2rem)] font-light leading-none text-jelly">
+          <p className="font-display m-0 mt-1 text-[clamp(2.2rem,7vw,3.2rem)] font-light leading-none text-jelly-ink">
             {allocated}%
           </p>
-          <p className="m-0 mt-2 text-[0.74rem] italic leading-snug text-ink-faint">
+          <p className="m-0 mt-2 text-[0.74rem] leading-snug text-ink-faint">
             10% to Andrew, 1% each to the other eleven. {openCount} row
             {openCount === 1 ? '' : 's'} still open.
           </p>

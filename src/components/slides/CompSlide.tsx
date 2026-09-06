@@ -49,9 +49,9 @@ export default function CompSlide({
       <div className="grid gap-8 lg:grid-cols-[1fr_0.62fr] lg:gap-14">
         <div className="space-y-7">
           {lines.map((l) => (
-            <div key={l.band} className="border-t border-ink pt-4">
+            <div key={l.band} className="glasspane p-4 sm:p-5">
               <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-                <p className="font-display m-0 text-[clamp(2rem,6vw,2.9rem)] font-light leading-none text-jelly">
+                <p className="font-display m-0 text-[clamp(2rem,6vw,2.9rem)] font-light leading-none text-jelly-ink">
                   {ink(l.band)}
                   <span className="text-[0.9rem] tracking-normal text-ink-faint"> / yr each</span>
                 </p>
@@ -69,7 +69,7 @@ export default function CompSlide({
                 {l.people.map((p) => (
                   <li
                     key={p}
-                    className="border border-rule bg-paper-deep px-[0.6rem] py-[0.3rem] text-[0.82rem] leading-none text-ink transition-colors duration-150 hover:border-jelly hover:text-jelly"
+                    className="pill border border-[rgba(255,255,255,0.7)] bg-white/55 px-[0.75rem] py-[0.38rem] text-[0.82rem] leading-none text-ink transition-colors duration-150 hover:border-jelly hover:text-jelly-ink"
                   >
                     {ink(p)}
                   </li>
@@ -77,7 +77,7 @@ export default function CompSlide({
               </ul>
 
               {l.note ? (
-                <p className="m-0 mt-2 text-[0.74rem] italic leading-snug text-ink-faint">
+                <p className="m-0 mt-2 text-[0.74rem] leading-snug text-ink-faint">
                   {ink(l.note)}
                 </p>
               ) : null}
@@ -85,12 +85,12 @@ export default function CompSlide({
           ))}
         </div>
 
-        <div>
+        <div className="glasspane self-start p-4 sm:p-5">
           <p className="eyebrow m-0 text-[0.6rem]">Base payroll, year one</p>
-          <p className="font-display m-0 mt-1 text-[clamp(2.4rem,8vw,3.4rem)] font-light leading-none text-jelly">
+          <p className="font-display m-0 mt-1 text-[clamp(2.4rem,8vw,3.4rem)] font-light leading-none text-jelly-ink">
             {money(total)}
           </p>
-          <p className="m-0 mt-2 text-[0.74rem] italic leading-snug text-ink-faint">
+          <p className="m-0 mt-2 text-[0.74rem] leading-snug text-ink-faint">
 {headcount} salaries priced, {open} still open. Base only: no taxes, benefits or bonus in
             that number yet.
           </p>
@@ -103,7 +103,7 @@ export default function CompSlide({
                   {ink(t.value)}
                 </p>
                 {t.note ? (
-                  <p className="m-0 mt-1 text-[0.72rem] italic leading-snug text-ink-faint">
+                  <p className="m-0 mt-1 text-[0.72rem] leading-snug text-ink-faint">
                     {ink(t.note)}
                   </p>
                 ) : null}

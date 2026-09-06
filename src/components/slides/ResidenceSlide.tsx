@@ -25,25 +25,25 @@ export default function ResidenceSlide({
 }: Props) {
   return (
     <Frame eyebrow={eyebrow} title={title} standfirst={standfirst} footnote={footnote}>
-      <p className="m-0 -mt-4 mb-5 border-y border-ink py-[0.55rem] text-[0.85rem] leading-snug text-ink-soft">
+      <p className="glasspane m-0 -mt-3 mb-6 px-4 py-[0.7rem] text-[0.85rem] leading-snug text-ink-soft">
         {ink(chooser)}
       </p>
 
       <div className="grid gap-8 lg:grid-cols-[1fr_1fr_0.85fr] lg:gap-12">
         {briefs.map((b) => (
-          <div key={b.city} className="border-t border-ink pt-4">
+          <div key={b.city} className="glasspane p-4 sm:p-5">
             <p className="eyebrow m-0 text-[0.6rem]">Residence</p>
             <h3 className="font-display m-0 mt-1 text-[clamp(1.5rem,4.4vw,2rem)] font-light leading-none text-ink">
               {ink(b.city)}
             </h3>
-            <p className="m-0 mt-2 max-w-[40ch] text-[0.84rem] italic leading-snug text-ink-soft">
+            <p className="m-0 mt-2 max-w-[40ch] text-[0.84rem] leading-snug text-ink-soft">
               {ink(b.anchor)}
             </p>
 
-            <p className="font-display m-0 mt-3 text-[1.45rem] font-light leading-none text-jelly">
+            <p className="font-display m-0 mt-3 text-[1.45rem] font-light leading-none text-jelly-ink">
               {ink(b.estimate)}
             </p>
-            <p className="m-0 mt-1 text-[0.74rem] italic leading-snug text-ink-faint">
+            <p className="m-0 mt-1 text-[0.74rem] leading-snug text-ink-faint">
               {ink(b.estimateNote)}
             </p>
 
@@ -53,7 +53,7 @@ export default function ResidenceSlide({
                   key={c}
                   className="flex gap-2 border-b border-rule pb-[0.5rem] text-[0.82rem] leading-snug text-ink"
                 >
-                  <span className="mt-[0.45em] h-[5px] w-[5px] shrink-0 rotate-45 bg-jelly" aria-hidden="true" />
+                  <span className="mt-[0.45em] h-[5px] w-[5px] shrink-0 rounded-full bg-jelly" aria-hidden="true" />
                   <span>{ink(c)}</span>
                 </li>
               ))}
@@ -61,7 +61,7 @@ export default function ResidenceSlide({
           </div>
         ))}
 
-        <div className="border-t border-ink pt-4">
+        <div className="glasspane p-4 sm:p-5">
           <p className="eyebrow m-0 text-[0.6rem]">What is actually on the market</p>
           <ul className="m-0 mt-3 list-none space-y-[0.45rem] p-0">
             {comps.map((c) => (
@@ -70,7 +70,7 @@ export default function ResidenceSlide({
                   <p className="font-display m-0 text-[0.98rem] font-light leading-tight text-ink">
                     {ink(c.name)}
                   </p>
-                  <p className="font-display m-0 shrink-0 text-[0.98rem] font-light leading-none text-jelly">
+                  <p className="font-display m-0 shrink-0 text-[0.98rem] font-light leading-none text-jelly-ink">
                     {ink(c.price)}
                   </p>
                 </div>
@@ -80,7 +80,7 @@ export default function ResidenceSlide({
               </li>
             ))}
           </ul>
-          <p className="m-0 mt-2 text-[0.72rem] italic leading-snug text-ink-faint">
+          <p className="m-0 mt-2 text-[0.72rem] leading-snug text-ink-faint">
             {ink(compsNote)}
           </p>
         </div>

@@ -23,10 +23,10 @@ export default function InvestorsSlide({
         {groups.map((g, i) => (
           <li
             key={g.heading}
-            className="border-t-2 border-ink py-5 sm:mr-5 sm:last:mr-0"
+            className="glasspane p-5 sm:mr-4 sm:p-6 sm:last:mr-0"
           >
             <span className="eyebrow block text-[0.6rem]">Kind {String(i + 1).padStart(2, '0')}</span>
-            <h3 className="font-display mt-2 text-[1.55rem] font-light italic leading-none text-ink">
+            <h3 className="font-display mt-2 text-[1.55rem] font-light leading-none text-ink">
               {g.heading}
             </h3>
             <p className="mt-3 max-w-[34ch] text-[0.92rem] leading-[1.5] text-ink-soft">

@@ -4,25 +4,39 @@ type Props = { title: string; standfirst: string; meta: string[] };
 
 export default function TitleSlide({ title, standfirst, meta }: Props) {
   return (
-    <div className="mx-auto flex w-full max-w-[1180px] flex-col justify-center px-6 pb-24 pt-16 sm:px-10 lg:px-16">
+    <div className="mx-auto flex w-full max-w-[1180px] flex-col justify-center px-6 pb-28 pt-16 sm:px-10 lg:px-16">
       <div className="rise">
-        <p className="eyebrow m-0">Confidential · do not forward</p>
-        <h1 className="font-display mt-6 text-[clamp(3.2rem,15vw,9rem)] font-light leading-[0.84] tracking-[-0.035em] text-ink">
-          Jelly<span className="italic text-jelly">Jelly</span>
+        <div className="flex items-center gap-3">
+          <img
+            src="/jelly-icon.svg"
+            alt=""
+            aria-hidden="true"
+            className="blob h-9 w-9 sm:h-11 sm:w-11"
+          />
+          <p className="eyebrow m-0">Confidential &middot; do not forward</p>
+        </div>
+
+        <h1 className="font-display mt-7 text-[clamp(3.4rem,15vw,9rem)] font-light leading-[0.86] tracking-[-0.035em] text-ink">
+          Jelly<span className="text-ink-faint">Jelly</span>
         </h1>
-        <div className="mt-8 h-px w-full max-w-[520px] bg-ink" />
-        <p className="font-display mt-6 max-w-[26ch] text-[clamp(1.35rem,4.2vw,2.1rem)] font-light italic leading-[1.2] text-ink">
+
+        <p className="font-display mt-7 max-w-[30ch] text-[clamp(1.4rem,4.4vw,2.35rem)] font-light leading-[1.16] tracking-[-0.02em] text-ink-soft">
           {ink(standfirst)}
         </p>
-        <ul className="mt-10 flex list-none flex-col gap-2 p-0 sm:flex-row sm:gap-8">
+
+        <ul className="mt-9 flex list-none flex-wrap gap-2 p-0 sm:gap-3">
           {meta.map((m) => (
-            <li key={m} className="eyebrow m-0 text-ink-soft">
+            <li
+              key={m}
+              className="glasspane pill px-4 py-2 text-[0.78rem] font-medium tracking-[0.02em] text-ink-soft"
+            >
               {m}
             </li>
           ))}
         </ul>
-        <p className="mt-10 text-[0.8rem] text-ink-faint">
-          {title} · use → / ← to move through the deck
+
+        <p className="mt-9 text-[0.82rem] text-ink-faint">
+          {title} &middot; use &rarr; / &larr; to move through the deck
         </p>
       </div>
     </div>

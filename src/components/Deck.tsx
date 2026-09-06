@@ -89,9 +89,14 @@ export default function Deck() {
       onTouchEnd={onTouchEnd}
     >
       {/* running head */}
-      <header className="deck-chrome pointer-events-none fixed left-0 right-0 top-0 z-20 flex items-center justify-between gap-4 px-6 pt-5 sm:px-10 lg:px-16">
-        <span className="eyebrow">{deckMeta.company}</span>
-        <span className="eyebrow text-right">{deckMeta.audience}</span>
+      <header className="deck-chrome pointer-events-none fixed left-0 right-0 top-0 z-20 flex items-center justify-between gap-4 px-5 pt-4 sm:px-10 sm:pt-5 lg:px-16">
+        <span className="glasspane pill flex items-center gap-2 px-3 py-1.5">
+          <img src="/jelly-icon.svg" alt="" aria-hidden="true" className="h-4 w-4" />
+          <span className="eyebrow">{deckMeta.company}</span>
+        </span>
+        <span className="glasspane pill hidden px-3 py-1.5 sm:block">
+          <span className="eyebrow">{deckMeta.audience}</span>
+        </span>
       </header>
 
       {slides.map((s, n) => (
@@ -107,15 +112,15 @@ export default function Deck() {
       ))}
 
       {/* foot: progress, counter, controls */}
-      <footer className="deck-chrome fixed bottom-0 left-0 right-0 z-20 border-t border-rule bg-paper/92 backdrop-blur-[2px]">
+      <footer className="deck-chrome fixed bottom-0 left-0 right-0 z-20 border-t border-[rgba(255,255,255,0.6)] bg-white/40 backdrop-blur-md">
         <div
-          className="h-[2px] bg-jelly transition-[width] duration-500 ease-out"
+          className="h-[3px] rounded-r-full bg-jelly transition-[width] duration-500 ease-out"
           style={{ width: `${((i + 1) / slides.length) * 100}%` }}
         />
         <div className="flex items-center justify-between gap-3 px-4 py-2 sm:px-10 lg:px-16">
           <div className="min-w-0">
-            <p className="eyebrow m-0 truncate text-[0.6rem]">{current.nav}</p>
-            <p className="font-display m-0 text-[0.95rem] font-light text-ink">
+            <p className="eyebrow m-0 truncate text-[0.62rem]">{current.nav}</p>
+            <p className="font-display m-0 text-[1rem] font-normal tracking-[-0.01em] text-ink">
               {String(i + 1).padStart(2, '0')}
               <span className="text-ink-faint"> / {String(slides.length).padStart(2, '0')}</span>
             </p>
@@ -128,8 +133,10 @@ export default function Deck() {
                 onClick={() => go(n)}
                 aria-label={s.nav}
                 aria-current={n === i ? 'true' : undefined}
-                className={`h-[10px] w-[10px] rotate-45 border border-ink transition-all duration-200 ${
-                  n === i ? 'bg-jelly border-jelly scale-125' : 'bg-transparent hover:bg-ink/20'
+                className={`rounded-full transition-all duration-200 ${
+                  n === i
+                    ? 'h-[10px] w-[10px] bg-ink'
+                    : 'h-[7px] w-[7px] bg-ink/25 hover:bg-jelly'
                 }`}
               />
             ))}
@@ -139,14 +146,14 @@ export default function Deck() {
             <button
               onClick={() => go(i - 1)}
               disabled={i === 0}
-              className="min-h-[44px] min-w-[44px] border border-ink px-4 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-ink transition-colors duration-150 hover:bg-ink hover:text-paper disabled:cursor-not-allowed disabled:opacity-25 disabled:hover:bg-transparent disabled:hover:text-ink"
+              className="pill min-h-[44px] min-w-[44px] border border-[rgba(26,31,43,0.18)] bg-white/50 px-5 text-[0.85rem] text-ink transition-colors duration-150 hover:bg-white/80 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-white/50"
             >
               Prev
             </button>
             <button
               onClick={() => go(i + 1)}
               disabled={i === last}
-              className="min-h-[44px] min-w-[44px] border border-ink bg-ink px-4 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-paper transition-colors duration-150 hover:bg-jelly hover:border-jelly disabled:cursor-not-allowed disabled:opacity-25"
+              className="pill min-h-[44px] min-w-[44px] border border-transparent bg-ink px-5 text-[0.85rem] text-white transition-colors duration-150 hover:bg-jelly-ink disabled:cursor-not-allowed disabled:opacity-30"
             >
               Next
             </button>

@@ -11,9 +11,9 @@ type Props = {
 };
 
 const mark: Record<CheckItem['status'], { glyph: string; label: string; cls: string }> = {
-  in: { glyph: '\u25c6', label: 'in the deck', cls: 'text-jelly' },
-  part: { glyph: '\u25c7', label: 'half there', cls: 'text-ink-soft' },
-  gap: { glyph: '\u2715', label: 'missing', cls: 'text-jelly-deep' },
+  in: { glyph: '\u25cf', label: 'in the deck', cls: 'text-jelly-ink' },
+  part: { glyph: '\u25cb', label: 'half there', cls: 'text-ink-soft' },
+  gap: { glyph: '\u2715', label: 'missing', cls: 'text-clay' },
 };
 
 export default function ChecklistSlide({
@@ -28,13 +28,13 @@ export default function ChecklistSlide({
   return (
     <Frame eyebrow={eyebrow} title={title} standfirst={standfirst} footnote={footnote}>
       <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:gap-12">
-        <ol className="m-0 list-none border-t border-rule p-0">
+        <ol className="glasspane m-0 list-none p-4 sm:p-5">
           {items.map((item) => {
             const m = mark[item.status];
             return (
               <li
                 key={item.slide}
-                className="grid grid-cols-[1.4rem_1fr] items-baseline gap-x-3 gap-y-1 border-b border-rule py-3 sm:grid-cols-[1.4rem_15rem_1fr] sm:gap-x-5"
+                className="grid grid-cols-[1.4rem_1fr] items-baseline gap-x-3 gap-y-1 border-b border-rule py-3 last:border-b-0 sm:grid-cols-[1.4rem_15rem_1fr] sm:gap-x-5"
               >
                 <span className={`text-[0.85rem] leading-none ${m.cls}`} aria-hidden="true">
                   {m.glyph}
@@ -51,14 +51,14 @@ export default function ChecklistSlide({
           })}
         </ol>
 
-        <aside className="self-start border-t-2 border-ink pt-4 lg:min-w-[13rem]">
+        <aside className="glasspane self-start p-4 sm:p-5 lg:min-w-[13rem]">
           <p className="eyebrow m-0">Still open</p>
           <p className="font-display m-0 mt-1 text-[3.2rem] font-light leading-none text-ink">
             {gaps}
             <span className="text-ink-faint">/{items.length}</span>
           </p>
           <p className="mt-3 max-w-[22ch] text-[0.82rem] leading-[1.5] text-ink-soft">
-            YC&rsquo;s order, checked against this deck. Diamonds are written, outlines are half
+            YC&rsquo;s order, checked against this deck. Filled dots are written, outlines are half
             there, crosses are not on the page yet.
           </p>
         </aside>

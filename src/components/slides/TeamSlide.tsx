@@ -13,16 +13,16 @@ type Props = {
 export default function TeamSlide({ eyebrow, title, standfirst, people, footnote }: Props) {
   return (
     <Frame eyebrow={eyebrow} title={title} standfirst={standfirst} footnote={footnote}>
-      <ul className="m-0 grid list-none grid-cols-1 gap-0 p-0 sm:grid-cols-2 lg:grid-cols-5">
+      <ul className="m-0 grid list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2 lg:grid-cols-5">
         {people.map((p, i) => (
           <li
             key={p.name}
-            className="group border-t border-rule py-5 lg:border-l lg:border-t-0 lg:px-4 lg:py-0 lg:first:border-l-0 lg:first:pl-0"
+            className="group glasspane p-5 transition-transform duration-300 hover:-translate-y-1"
           >
             <span className="eyebrow block text-[0.6rem] text-ink-faint">
               {String(i + 1).padStart(2, '0')}
             </span>
-            <h3 className="font-display mt-2 text-[1.75rem] font-light leading-none tracking-[-0.01em] text-ink transition-colors duration-300 group-hover:text-jelly">
+            <h3 className="font-display mt-2 text-[1.75rem] font-light leading-none tracking-[-0.01em] text-ink transition-colors duration-300 group-hover:text-jelly-ink">
               {p.name}
             </h3>
             <p className="mt-2 text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-ink-soft">

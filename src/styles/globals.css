@@ -1,39 +1,57 @@
 @import "tailwindcss";
 
-/* ── editorial: paper, ink, one red ─────────────────────────────── */
+/* ── jellyjelly.com: sky-to-sand gradient, navy ink, cornflower jelly ─────── */
 :root {
-  --paper: #f6f3ec;
-  --paper-deep: #efeae0;
-  --ink: #14110f;
-  --ink-soft: #4a443e;
-  --ink-faint: #8d8578;
-  --rule: #cdc5b6;
-  --jelly: #c8352b;
-  --jelly-deep: #8f231d;
+  /* the homepage hero gradient, verbatim */
+  --hero: linear-gradient(
+    160deg,
+    #a8c4e0 0%,
+    #c5d6e8 28%,
+    #e8ddd0 68%,
+    #f0e6d8 100%
+  );
+
+  --paper: #fdfdfb;
+  --paper-deep: rgba(255, 255, 255, 0.5);
+  --glass: rgba(255, 255, 255, 0.44);
+  --glass-edge: rgba(255, 255, 255, 0.72);
+
+  --ink: #1a1f2b;
+  --ink-soft: #4a5468;
+  --ink-faint: #8a93a3;
+  --rule: rgba(26, 31, 43, 0.13);
+  --rule-strong: rgba(26, 31, 43, 0.3);
+
+  --jelly: #6f9bf0;
+  --jelly-ink: #2f56b8;
+  --jelly-deep: #2f56b8;
+  --clay: #b0463b;
 
   --background: var(--paper);
   --foreground: var(--ink);
-  --card: #fffdf8;
+  --card: var(--glass);
   --card-foreground: var(--ink);
-  --popover: #fffdf8;
+  --popover: #ffffff;
   --popover-foreground: var(--ink);
   --primary: var(--ink);
-  --primary-foreground: var(--paper);
+  --primary-foreground: #ffffff;
   --secondary: var(--paper-deep);
   --secondary-foreground: var(--ink);
   --muted: var(--paper-deep);
   --muted-foreground: var(--ink-soft);
   --accent: var(--jelly);
-  --accent-foreground: #fffdf8;
-  --destructive: var(--jelly-deep);
-  --destructive-foreground: #fffdf8;
+  --accent-foreground: #ffffff;
+  --destructive: var(--clay);
+  --destructive-foreground: #ffffff;
   --border: var(--rule);
   --input: var(--rule);
   --ring: var(--jelly);
-  --radius: 0.125rem;
+  --radius: 1rem;
 
-  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
-  --font-body: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Switzer", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --font-body: "Switzer", "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
 }
 
 @theme inline {
@@ -53,69 +71,95 @@
   --color-ring: var(--ring);
   --color-paper: var(--paper);
   --color-paper-deep: var(--paper-deep);
+  --color-glass: var(--glass);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-ink-faint: var(--ink-faint);
   --color-rule: var(--rule);
   --color-jelly: var(--jelly);
+  --color-jelly-ink: var(--jelly-ink);
   --color-jelly-deep: var(--jelly-deep);
+  --color-clay: var(--clay);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
-  --radius-sm: 0.0625rem;
-  --radius-md: 0.125rem;
-  --radius-lg: 0.25rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
 }
 
 * { border-color: var(--rule); }
 
 html, body {
-  background: var(--paper);
   color: var(--ink);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-body {
-  margin: 0;
-  /* faint paper grain */
-  background-image:
-    radial-gradient(circle at 1px 1px, rgba(20, 17, 15, 0.045) 1px, transparent 0);
-  background-size: 4px 4px;
+html {
+  background: #c5d6e8;
 }
 
-::selection { background: var(--jelly); color: #fffdf8; }
+body {
+  margin: 0;
+  min-height: 100svh;
+  background: var(--hero);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+::selection { background: rgba(111, 155, 240, 0.32); color: var(--ink); }
 
 .font-display { font-family: var(--font-display); }
 
+/* homepage label style: 11px, semibold, wide caps */
 .eyebrow {
   font-family: var(--font-body);
   font-size: 0.6875rem;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
   font-weight: 600;
-  color: var(--ink-faint);
+  color: var(--ink-soft);
 }
 
+/* a gap only the founder can fill: obvious, never mistaken for a real number */
 .blank {
-  color: var(--jelly-deep);
+  color: var(--clay);
   font-family: var(--font-body);
   font-weight: 500;
-  background: rgba(200, 53, 43, 0.08);
-  border-bottom: 1px solid rgba(200, 53, 43, 0.35);
-  padding: 0 0.25em;
+  background: rgba(176, 70, 59, 0.09);
+  border-bottom: 1px dashed rgba(176, 70, 59, 0.5);
+  border-radius: 0.35rem 0.35rem 0 0;
+  padding: 0.05em 0.3em;
   white-space: nowrap;
 }
 
-/* ── slide plumbing ────────────────────────────────────────────── */
+/* frosted panel, the homepage's soft-glass register */
+.glasspane {
+  background: var(--glass);
+  border: 1px solid var(--glass-edge);
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 34px rgba(26, 31, 43, 0.07);
+  backdrop-filter: blur(10px) saturate(1.15);
+  -webkit-backdrop-filter: blur(10px) saturate(1.15);
+}
+
+.pill {
+  border-radius: 999px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* ── slide plumbing ──────────────────────────────────────────────────────── */
 .deck-slide { display: none; }
 .deck-slide[data-active="true"] { display: flex; }
 
 @keyframes riseIn {
-  from { opacity: 0; transform: translateY(14px); }
+  from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: none; }
 }
-.rise > * { animation: riseIn 620ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+.rise > * { animation: riseIn 680ms cubic-bezier(0.16, 1, 0.3, 1) both; }
 .rise > *:nth-child(1) { animation-delay: 40ms; }
 .rise > *:nth-child(2) { animation-delay: 110ms; }
 .rise > *:nth-child(3) { animation-delay: 180ms; }
@@ -123,16 +167,33 @@ body {
 .rise > *:nth-child(5) { animation-delay: 320ms; }
 .rise > *:nth-child(6) { animation-delay: 390ms; }
 
+@keyframes floatBlob {
+  from { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(0, -18px, 0) rotate(-4deg); }
+  to { transform: translate3d(0, 0, 0) rotate(0deg); }
+}
+.blob { animation: floatBlob 9s ease-in-out infinite; }
+
 @media (prefers-reduced-motion: reduce) {
   .rise > * { animation: none; }
+  .blob { animation: none; }
 }
 
-/* ── print: every slide is one page ────────────────────────────── */
+/* ── print: every slide is one page, gradient included ───────────────────── */
 @media print {
   @page { size: 1600px 900px; margin: 0; }
-  html, body { background: #fff; }
-  body { background-image: none; }
+  html, body {
+    background: var(--hero);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
   .deck-chrome { display: none !important; }
+  .glasspane {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.55);
+    box-shadow: none;
+  }
   .deck-slide,
   .deck-slide[data-active="false"] {
     display: flex !important;
@@ -140,6 +201,8 @@ body {
     page-break-after: always;
     height: 900px;
     width: 100%;
+    background: var(--hero);
   }
   .rise > * { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .blob { animation: none !important; }
 }
